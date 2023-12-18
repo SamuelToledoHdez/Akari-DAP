@@ -169,5 +169,29 @@ void isLampIllegal() {
 
 
     }
+    @Test
+void isSolved() {
+    PuzzleLibrary library = new PuzzleLibraryImpl();
+    Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+    library.addPuzzle(puzzle);
+
+    Model model = new ModelImpl(library);
+
+    // El puzzle no está resuelto al principio
+    assertFalse(model.isSolved());
+
+    // Coloca lámparas legalmente para resolver el puzzle
+    model.addLamp(0, 0);
+    model.addLamp(2, 1);
+    model.addLamp(4, 1);
+    model.addLamp(1, 3);
+    model.addLamp(2, 2);
+    model.addLamp(3, 1);
+    model.addLamp(4, 2);
+
+
+    // Verifica que el puzzle esté resuelto después de colocar lámparas
+    assertFalse(model.isSolved());
+}
 }
 
