@@ -156,5 +156,18 @@ void isLampIllegal() {
     assertFalse(model.isLampIllegal(2, 1));
     assertFalse(model.isLampIllegal(1, 0));
 }
+        @Test
+    void isClueSatisfied() {
+        PuzzleLibrary library = new PuzzleLibraryImpl();
+        Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+        library.addPuzzle(puzzle);
+
+        Model model = new ModelImpl(library);
+
+        // Verifica que la función devuelva true para una pista satisfecha
+        assertFalse(model.isClueSatisfied(5, 1));
+
+
+    }
 }
 
