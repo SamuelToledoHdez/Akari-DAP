@@ -11,6 +11,7 @@ Porcentaje coverage:
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=SamuelToledoHdez_Akari-DAP&metric=coverage)](https://sonarcloud.io/summary/new_code?id=SamuelToledoHdez_Akari-DAP)
 
 Circle CI Status : 
+
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/SamuelToledoHdez/Akari-DAP/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/SamuelToledoHdez/Akari-DAP/tree/main)
 
 ## Integrantes
