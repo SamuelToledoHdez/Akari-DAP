@@ -21,26 +21,18 @@
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 
         <!-- JaCoCo Properties -->
-    <jacoco.version>0.8.6</jacoco.version>
+    <jacoco.version>0.8.7</jacoco.version>
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
     <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-
     <sonar.language>java</sonar.language>
-
-
   </properties>
 
   <dependencies>
-
-
-
-
     <dependency>
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-controls</artifactId>
       <version>14</version>
     </dependency>
-    
 
     <dependency>
       <groupId>org.openjfx</groupId>
@@ -48,29 +40,27 @@
       <version>14</version>
     </dependency>
 
-      <dependency>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-          <version>4.12</version>
-          <scope>test</scope>
-      </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
 
     <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-api</artifactId>
         <version>5.8.2</version>
         <scope>test</scope>
-        </dependency>
-<dependency>
-    <groupId>org.junit.jupiter</groupId>
-    <artifactId>junit-jupiter-engine</artifactId>
-    <version>5.8.2</version>
-    <scope>test</scope>
-</dependency>
-
+    </dependency>
+    
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.8.2</version>
+        <scope>test</scope>
+    </dependency>
   </dependencies>
-
-  
 
   <build>
     <plugins>
@@ -85,49 +75,57 @@
                       </goals>
                   </execution>
               </executions>
-            </plugin>
+      </plugin>
+      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
         <version>3.21.2</version>
       </plugin>
+      
       <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
       <plugin>
         <artifactId>maven-clean-plugin</artifactId>
         <version>3.1.0</version>
       </plugin>
+      
       <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
       <plugin>
         <artifactId>maven-resources-plugin</artifactId>
         <version>3.0.2</version>
       </plugin>
+      
       <plugin>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.9.0</version>
-</plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.9.0</version>
+      </plugin>
 
-<plugin>
-    <artifactId>maven-surefire-plugin</artifactId>
-    <version>3.0.0-M5</version>
-</plugin>
+      <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>3.0.0-M5</version>
+      </plugin>
 
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.2</version>
       </plugin>
+      
       <plugin>
         <artifactId>maven-install-plugin</artifactId>
         <version>2.5.2</version>
       </plugin>
+      
       <plugin>
         <artifactId>maven-deploy-plugin</artifactId>
         <version>2.8.2</version>
       </plugin>
+      
       <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
       <plugin>
         <artifactId>maven-site-plugin</artifactId>
         <version>3.7.1</version>
       </plugin>
+      
       <plugin>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-maven-plugin</artifactId>
@@ -157,7 +155,6 @@
           </execution>
         </executions>
       </plugin>
-
 
       <!-- Outputs a runnable jar file so students can show off their project :) -->
       <plugin>
