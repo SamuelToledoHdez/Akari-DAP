@@ -193,5 +193,28 @@ void isSolved() {
     // Verifica que el puzzle esté resuelto después de colocar lámparas
     assertFalse(model.isSolved());
 }
+
+    @Test
+void setActivePuzzleIndex() {
+    PuzzleLibrary library = new PuzzleLibraryImpl();
+    Puzzle puzzle1 = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+    Puzzle puzzle2 = new PuzzleImpl(new int[][]{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
+    library.addPuzzle(puzzle1);
+    library.addPuzzle(puzzle2);
+
+    Model model = new ModelImpl(library);
+
+    // Verifica que el puzzle activo inicial es el puzzle1
+    assertEquals(puzzle1, model.getActivePuzzle());
+
+    // Cambia al puzzle2 usando setActivePuzzleIndex
+    model.setActivePuzzleIndex(1);
+    assertEquals(puzzle2, model.getActivePuzzle());
+
+    // Intenta establecer un índice fuera de rango y asegúrate de que se lance una excepción
+    assertThrows(IndexOutOfBoundsException.class, () -> model.setActivePuzzleIndex(2));
+    assertThrows(IndexOutOfBoundsException.class, () -> model.setActivePuzzleIndex(-1));
+}
+    
 }
 
