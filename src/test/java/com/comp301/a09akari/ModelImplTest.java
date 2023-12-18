@@ -117,5 +117,44 @@ class ModelImplTest {
         // Checking an invalid index should throw an IndexOutOfBoundsException
         assertThrows(IndexOutOfBoundsException.class, () -> model.isLit(8, 8));
     }
+
+        @Test
+    void isLamp() {
+        PuzzleLibrary library = new PuzzleLibraryImpl();
+        Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+        library.addPuzzle(puzzle);
+
+        Model model = new ModelImpl(library);
+
+        // Verifica que la función devuelva false antes de agregar una lámpara
+        assertFalse(model.isLamp(2, 1));
+
+        // Agrega una lámpara y verifica que la función devuelva true
+        model.addLamp(2, 1);
+        assertTrue(model.isLamp(2, 1));
+
+        // Verifica que la función devuelva false después de quitar la lámpara
+        model.removeLamp(2, 1);
+        assertFalse(model.isLamp(2, 1));
+    }
+
+@Test
+void isLampIllegal() {
+    PuzzleLibrary library = new PuzzleLibraryImpl();
+    Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+    library.addPuzzle(puzzle);
+
+    Model model = new ModelImpl(library);
+
+    // Agrega lámparas legalmente
+    model.addLamp(2, 1);
+
+    // Cambia las coordenadas a un pasillo (asegúrate de elegir unas válidas en el puzzle)
+    model.addLamp(1, 0);
+
+    // Verifica que la función devuelva false para lámparas ilegales en diferentes direcciones
+    assertFalse(model.isLampIllegal(2, 1));
+    assertFalse(model.isLampIllegal(1, 0));
+}
 }
 
