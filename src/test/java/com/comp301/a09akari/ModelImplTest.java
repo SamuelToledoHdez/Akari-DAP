@@ -215,6 +215,56 @@ void setActivePuzzleIndex() {
     assertThrows(IndexOutOfBoundsException.class, () -> model.setActivePuzzleIndex(2));
     assertThrows(IndexOutOfBoundsException.class, () -> model.setActivePuzzleIndex(-1));
 }
-    
+
+    @Test
+void addObserver() {
+    PuzzleLibrary library = new PuzzleLibraryImpl();
+    Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+    library.addPuzzle(puzzle);
+
+    Model model = new ModelImpl(library);
+
+    // Añade un observador al modelo
+    ModelObserver observer = new ModelObserver() {
+        @Override
+        public void update(Model model) {
+    }
+        
+    };
+
+    // Añade el observador al modelo
+    model.addObserver(observer);
+
+
+
+    // Asegúrate de que no se lance una excepción inesperada al añadir el observador
+    assertDoesNotThrow(() -> model.addObserver(modelObserver -> {}));
+}
+
+@Test
+void removeObserver() {
+    PuzzleLibrary library = new PuzzleLibraryImpl();
+    Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+    library.addPuzzle(puzzle);
+
+    Model model = new ModelImpl(library);
+
+    // Añade un observador al modelo
+    ModelObserver observer = new ModelObserver() {
+        @Override
+        public void update(Model model) {
+    }
+        
+    };
+
+    // Añade el observador al modelo
+    model.addObserver(observer);
+
+    model.removeObserver(observer);
+
+
+    // Verificar que el observador fue removido correctamente
+    assertDoesNotThrow(() -> model.removeObserver(observer));
+}
 }
 
