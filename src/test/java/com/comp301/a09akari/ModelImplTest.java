@@ -266,5 +266,32 @@ void removeObserver() {
     // Verificar que el observador fue removido correctamente
     assertDoesNotThrow(() -> model.removeObserver(observer));
 }
+
+    
+@Test
+void notifyObservers() {
+    PuzzleLibrary library = new PuzzleLibraryImpl();
+    Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+    library.addPuzzle(puzzle);
+
+    ModelImpl model = new ModelImpl(library);
+
+    // Añade un observador al modelo
+    ModelObserver observer = new ModelObserver() {
+        @Override
+        public void update(Model model) {
+    }
+        
+    };
+
+    // Añade el observador al modelo
+    model.addObserver(observer);
+
+    model.notifyObservers();
+
+
+    // Verificar que el observador fue removido correctamente
+    assertDoesNotThrow(() -> model.notifyObservers());
+}
 }
 
