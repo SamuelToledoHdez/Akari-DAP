@@ -183,6 +183,22 @@
           </execution>
         </executions>
       </plugin>
+      
+       <!-- Plugin de Checkstyle para mantenimiento del estilo de codificación -->
+       <plugin>
+                 <groupId>org.apache.maven.plugins</groupId>
+                 <artifactId>maven-checkstyle-plugin</artifactId>
+                 <version>3.0.0</version>
+                 <configuration>
+                     <configLocation>checkstyle.xml</configLocation>
+                 </configuration>
+       </plugin>
+      <!-- Plugin de FindBugs para análisis estático en busca de bugs y problemas de rendimiento -->
+      <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>findbugs-maven-plugin</artifactId>
+          <version>3.0.5</version>
+      </plugin>
     </plugins>
   </build>
 </project>
