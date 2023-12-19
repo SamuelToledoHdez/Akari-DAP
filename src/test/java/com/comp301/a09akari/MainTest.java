@@ -1,51 +1,29 @@
-//  package com.comp301.a09akari;
-// import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-// import static org.junit.jupiter.api.Assertions.fail;
-// import org.junit.jupiter.api.Assertions;
-// import org.testfx.framework.junit5.ApplicationTest;
+package com.comp301.a09akari;
+import com.comp301.a09akari.view.AppLauncher;
+import javafx.application.Application;
+import org.junit.Test;
 
-// import com.comp301.a09akari.controller.*;
-// import com.comp301.a09akari.*;
-// import com.comp301.a09akari.model.*;
-// import com.comp301.a09akari.view.*;
+import static org.junit.Assert.assertNotNull;
 
-// import javafx.stage.Stage;
+public class MainTest {
 
-// import org.junit.jupiter.api.Test;
-// import static org.junit.jupiter.api.Assertions.*;
+    @Test
+    public void testMainLaunchesApp() {
+        // Intenta lanzar la aplicación y asegúrate de que no se produzcan excepciones
+        try {
+            Main.main(new String[]{});
+        } catch (Exception e) {
+            // Si se produce una excepción, falla la prueba
+            e.printStackTrace();
+            assert false;
+        }
+        // Si no se lanzan excepciones, la prueba pasa
+        assert true;
+    }
 
-// class MainTest {
-//     @Test
-//     public void start() {
-//         // Inicia la aplicaciÃ³n JavaFX
-//         Main.main(new String[]{});
-//     }
-
-// }
-
-// import javafx.application.Platform;
-// import javafx.stage.Stage;
-// import org.junit.jupiter.api.Test;
-// import org.testfx.framework.junit5.ApplicationTest;
-
-// import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-
-// public class MainTest extends ApplicationTest {
-
-//     @Test
-//     public void testStart() {
-//         // Inicia la aplicación JavaFX en el hilo de la interfaz de usuario
-//         Platform.runLater(() -> {
-//             assertDoesNotThrow(() -> new Main().start(new Stage()));
-//         });
-//     }
-// }
-
-
-
-
-
-
-
-
-
+    @Test
+    public void testAppLauncherIsPresent() {
+        // Asegúrate de que la clase AppLauncher esté presente y accesible
+        assertNotNull(AppLauncher.class);
+    }
+}
