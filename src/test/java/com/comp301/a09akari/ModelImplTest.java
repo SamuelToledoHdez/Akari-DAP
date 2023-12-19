@@ -117,8 +117,11 @@ class ModelImplTest {
         // Checking an invalid index should throw an IndexOutOfBoundsException
         assertThrows(IndexOutOfBoundsException.class, () -> model.isLit(8, 8));
     }
-
-        @Test
+    /**
+     * @brief Test for the isLamp method in the ModelImpl class.
+     * @details This test checks the behavior of the isLamp method by adding and removing lamps.
+     */
+    @Test
     void isLamp() {
         PuzzleLibrary library = new PuzzleLibraryImpl();
         Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
@@ -137,26 +140,33 @@ class ModelImplTest {
         model.removeLamp(2, 1);
         assertFalse(model.isLamp(2, 1));
     }
-
-@Test
-void isLampIllegal() {
-    PuzzleLibrary library = new PuzzleLibraryImpl();
-    Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
-    library.addPuzzle(puzzle);
-
-    Model model = new ModelImpl(library);
-
-    // Agrega lámparas legalmente
-    model.addLamp(2, 1);
-
-    // Cambia las coordenadas a un pasillo (asegúrate de elegir unas válidas en el puzzle)
-    model.addLamp(1, 0);
-
-    // Verifica que la función devuelva false para lámparas ilegales en diferentes direcciones
-    assertFalse(model.isLampIllegal(2, 1));
-    assertFalse(model.isLampIllegal(1, 0));
-}
-        @Test
+    /**
+     * @brief Test for the isLampIllegal method in the ModelImpl class.
+     * @details This test checks the behavior of the isLampIllegal method for illegal lamp positions.
+     */
+    @Test
+    void isLampIllegal() {
+        PuzzleLibrary library = new PuzzleLibraryImpl();
+        Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+        library.addPuzzle(puzzle);
+    
+        Model model = new ModelImpl(library);
+    
+        // Agrega lámparas legalmente
+        model.addLamp(2, 1);
+    
+        // Cambia las coordenadas a un pasillo (asegúrate de elegir unas válidas en el puzzle)
+        model.addLamp(1, 0);
+    
+        // Verifica que la función devuelva false para lámparas ilegales en diferentes direcciones
+        assertFalse(model.isLampIllegal(2, 1));
+        assertFalse(model.isLampIllegal(1, 0));
+    }
+    /**
+     * @brief Test for the isClueSatisfied method in the ModelImpl class.
+     * @details This test checks the behavior of the isClueSatisfied method for a satisfied clue.
+     */
+    @Test
     void isClueSatisfied() {
         PuzzleLibrary library = new PuzzleLibraryImpl();
         Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
@@ -166,132 +176,144 @@ void isLampIllegal() {
 
         // Verifica que la función devuelva true para una pista satisfecha
         assertFalse(model.isClueSatisfied(5, 1));
-
-
     }
+    /**
+     * @brief Test for the isSolved method in the ModelImpl class.
+     * @details This test checks the behavior of the isSolved method for a solved puzzle.
+     */
     @Test
-void isSolved() {
-    PuzzleLibrary library = new PuzzleLibraryImpl();
-    Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
-    library.addPuzzle(puzzle);
-
-    Model model = new ModelImpl(library);
-
-    // El puzzle no está resuelto al principio
-    assertFalse(model.isSolved());
-
-    // Coloca lámparas legalmente para resolver el puzzle
-    model.addLamp(0, 0);
-    model.addLamp(2, 1);
-    model.addLamp(4, 1);
-    model.addLamp(1, 3);
-    model.addLamp(2, 2);
-    model.addLamp(3, 1);
-    model.addLamp(4, 2);
-
-
-    // Verifica que el puzzle esté resuelto después de colocar lámparas
-    assertFalse(model.isSolved());
-}
-
-    @Test
-void setActivePuzzleIndex() {
-    PuzzleLibrary library = new PuzzleLibraryImpl();
-    Puzzle puzzle1 = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
-    Puzzle puzzle2 = new PuzzleImpl(new int[][]{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
-    library.addPuzzle(puzzle1);
-    library.addPuzzle(puzzle2);
-
-    Model model = new ModelImpl(library);
-
-    // Verifica que el puzzle activo inicial es el puzzle1
-    assertEquals(puzzle1, model.getActivePuzzle());
-
-    // Cambia al puzzle2 usando setActivePuzzleIndex
-    model.setActivePuzzleIndex(1);
-    assertEquals(puzzle2, model.getActivePuzzle());
-
-    // Intenta establecer un índice fuera de rango y asegúrate de que se lance una excepción
-    assertThrows(IndexOutOfBoundsException.class, () -> model.setActivePuzzleIndex(2));
-    assertThrows(IndexOutOfBoundsException.class, () -> model.setActivePuzzleIndex(-1));
-}
-
-    @Test
-void addObserver() {
-    PuzzleLibrary library = new PuzzleLibraryImpl();
-    Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
-    library.addPuzzle(puzzle);
-
-    Model model = new ModelImpl(library);
-
-    // Añade un observador al modelo
-    ModelObserver observer = new ModelObserver() {
-        @Override
-        public void update(Model model) {
-    }
-        
-    };
-
-    // Añade el observador al modelo
-    model.addObserver(observer);
-
-
-
-    // Asegúrate de que no se lance una excepción inesperada al añadir el observador
-    assertDoesNotThrow(() -> model.addObserver(modelObserver -> {}));
-}
-
-@Test
-void removeObserver() {
-    PuzzleLibrary library = new PuzzleLibraryImpl();
-    Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
-    library.addPuzzle(puzzle);
-
-    Model model = new ModelImpl(library);
-
-    // Añade un observador al modelo
-    ModelObserver observer = new ModelObserver() {
-        @Override
-        public void update(Model model) {
-    }
-        
-    };
-
-    // Añade el observador al modelo
-    model.addObserver(observer);
-
-    model.removeObserver(observer);
-
-
-    // Verificar que el observador fue removido correctamente
-    assertDoesNotThrow(() -> model.removeObserver(observer));
-}
-
+    void isSolved() {
+        PuzzleLibrary library = new PuzzleLibraryImpl();
+        Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+        library.addPuzzle(puzzle);
     
-@Test
-void notifyObservers() {
-    PuzzleLibrary library = new PuzzleLibraryImpl();
-    Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
-    library.addPuzzle(puzzle);
-
-    ModelImpl model = new ModelImpl(library);
-
-    // Añade un observador al modelo
-    ModelObserver observer = new ModelObserver() {
-        @Override
-        public void update(Model model) {
+        Model model = new ModelImpl(library);
+    
+        // El puzzle no está resuelto al principio
+        assertFalse(model.isSolved());
+    
+        // Coloca lámparas legalmente para resolver el puzzle
+        model.addLamp(0, 0);
+        model.addLamp(2, 1);
+        model.addLamp(4, 1);
+        model.addLamp(1, 3);
+        model.addLamp(2, 2);
+        model.addLamp(3, 1);
+        model.addLamp(4, 2);
+    
+    
+        // Verifica que el puzzle esté resuelto después de colocar lámparas
+        assertFalse(model.isSolved());
     }
-        
-    };
+    /**
+     * @brief Test for the setActivePuzzleIndex method in the ModelImpl class.
+     * @details This test checks the behavior of the setActivePuzzleIndex method.
+     */
+    @Test
+    void setActivePuzzleIndex() {
+        PuzzleLibrary library = new PuzzleLibraryImpl();
+        Puzzle puzzle1 = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+        Puzzle puzzle2 = new PuzzleImpl(new int[][]{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}});
+        library.addPuzzle(puzzle1);
+        library.addPuzzle(puzzle2);
+    
+        Model model = new ModelImpl(library);
+    
+        // Verifica que el puzzle activo inicial es el puzzle1
+        assertEquals(puzzle1, model.getActivePuzzle());
+    
+        // Cambia al puzzle2 usando setActivePuzzleIndex
+        model.setActivePuzzleIndex(1);
+        assertEquals(puzzle2, model.getActivePuzzle());
+    
+        // Intenta establecer un índice fuera de rango y asegúrate de que se lance una excepción
+        assertThrows(IndexOutOfBoundsException.class, () -> model.setActivePuzzleIndex(2));
+        assertThrows(IndexOutOfBoundsException.class, () -> model.setActivePuzzleIndex(-1));
+    }
+    /**
+     * @brief Test for the addObserver method in the ModelImpl class.
+     * @details This test checks the behavior of adding an observer to the model.
+     */
+    @Test
+    void addObserver() {
+        PuzzleLibrary library = new PuzzleLibraryImpl();
+        Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+        library.addPuzzle(puzzle);
+    
+        Model model = new ModelImpl(library);
+    
+        // Añade un observador al modelo
+        ModelObserver observer = new ModelObserver() {
+            @Override
+            public void update(Model model) {
+        }
+            
+        };
+    
+        // Añade el observador al modelo
+        model.addObserver(observer);
+    
+        // Asegúrate de que no se lance una excepción inesperada al añadir el observador
+        assertDoesNotThrow(() -> model.addObserver(modelObserver -> {}));
+    }
+    /**
+     * @brief Test for the removeObserver method in the ModelImpl class.
+     * @details This test checks the behavior of removing an observer from the model.
+     */
+    @Test
+    void removeObserver() {
+        PuzzleLibrary library = new PuzzleLibraryImpl();
+        Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+        library.addPuzzle(puzzle);
+    
+        Model model = new ModelImpl(library);
+    
+        // Añade un observador al modelo
+        ModelObserver observer = new ModelObserver() {
+            @Override
+            public void update(Model model) {
+        }
+            
+        };
+    
+        // Añade el observador al modelo
+        model.addObserver(observer);
+    
+        model.removeObserver(observer);
+    
+    
+        // Verificar que el observador fue removido correctamente
+        assertDoesNotThrow(() -> model.removeObserver(observer));
+    }
 
-    // Añade el observador al modelo
-    model.addObserver(observer);
-
-    model.notifyObservers();
-
-
-    // Verificar que el observador fue removido correctamente
-    assertDoesNotThrow(() -> model.notifyObservers());
-}
-}
+    /**
+     * @brief Test for the notifyObservers method in the ModelImpl class.
+     * @details This test checks the behavior of notifying observers in the model.
+     */
+    @Test
+    void notifyObservers() {
+        PuzzleLibrary library = new PuzzleLibraryImpl();
+        Puzzle puzzle = new PuzzleImpl(SamplePuzzles.PUZZLE_05);
+        library.addPuzzle(puzzle);
+    
+        ModelImpl model = new ModelImpl(library);
+    
+        // Añade un observador al modelo
+        ModelObserver observer = new ModelObserver() {
+            @Override
+            public void update(Model model) {
+        }
+            
+        };
+    
+        // Añade el observador al modelo
+        model.addObserver(observer);
+    
+        model.notifyObservers();
+    
+    
+        // Verificar que el observador fue removido correctamente
+        assertDoesNotThrow(() -> model.notifyObservers());
+    }
+    }
 
