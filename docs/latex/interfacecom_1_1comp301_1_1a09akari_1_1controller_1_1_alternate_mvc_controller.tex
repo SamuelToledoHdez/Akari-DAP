@@ -1,0 +1,150 @@
+\doxysection{com.\+comp301.\+a09akari.\+controller.\+Alternate\+Mvc\+Controller Interface Reference}
+\label{interfacecom_1_1comp301_1_1a09akari_1_1controller_1_1_alternate_mvc_controller}\index{com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}}
+
+
+Interface for handling puzzle-\/related actions in an MVC architecture.  
+
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\label{interfacecom_1_1comp301_1_1a09akari_1_1controller_1_1_alternate_mvc_controller_a596093f7ea88247338fd114fe8787330} 
+void {\bfseries click\+Next\+Puzzle} ()
+\begin{DoxyCompactList}\small\item\em Handles the click action to go to the next puzzle. \end{DoxyCompactList}\item 
+\label{interfacecom_1_1comp301_1_1a09akari_1_1controller_1_1_alternate_mvc_controller_a7740e641256c2278ab5938659d688369} 
+void {\bfseries click\+Prev\+Puzzle} ()
+\begin{DoxyCompactList}\small\item\em Handles the click action to go to the next puzzle. \end{DoxyCompactList}\item 
+\label{interfacecom_1_1comp301_1_1a09akari_1_1controller_1_1_alternate_mvc_controller_ad1f7fcce8b76c3d96c74bc6f14bbf224} 
+void {\bfseries click\+Rand\+Puzzle} ()
+\begin{DoxyCompactList}\small\item\em Handles the click action to go to a random puzzle. \end{DoxyCompactList}\item 
+\label{interfacecom_1_1comp301_1_1a09akari_1_1controller_1_1_alternate_mvc_controller_a11f5840d6370757be10df3644a604119} 
+void {\bfseries click\+Reset\+Puzzle} ()
+\begin{DoxyCompactList}\small\item\em Handles the click action to reset the currently active puzzle. \end{DoxyCompactList}\item 
+void \textbf{ click\+Cell} (int r, int c)
+\begin{DoxyCompactList}\small\item\em Handles the click event on the cell at row r, column c. \end{DoxyCompactList}\item 
+boolean \textbf{ is\+Lit} (int r, int c)
+\begin{DoxyCompactList}\small\item\em Returns true if the CORRIDOR cell at row r, column c is lit. \end{DoxyCompactList}\item 
+boolean \textbf{ is\+Lamp} (int r, int c)
+\begin{DoxyCompactList}\small\item\em Returns true if the CORRIDOR cell at row r, column c is a lamp. \end{DoxyCompactList}\item 
+boolean \textbf{ is\+Clue\+Satisfied} (int r, int c)
+\begin{DoxyCompactList}\small\item\em Returns true if the CLUE cell at row r, column c is satisfied by nearby lamps. \end{DoxyCompactList}\item 
+boolean \textbf{ is\+Solved} ()
+\begin{DoxyCompactList}\small\item\em Returns true if the active puzzle is solved. \end{DoxyCompactList}\item 
+Puzzle \textbf{ get\+Active\+Puzzle} ()
+\begin{DoxyCompactList}\small\item\em Getter method for the active puzzle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for handling puzzle-\/related actions in an MVC architecture. 
+
+This interface defines methods for handling actions such as moving to the next/previous puzzle, resetting the current puzzle, and interacting with individual cells in the puzzle. 
+
+\doxysubsection{Member Function Documentation}
+\label{interfacecom_1_1comp301_1_1a09akari_1_1controller_1_1_alternate_mvc_controller_ab539dfebe06dc3498d2af09bc8e1aeef} 
+\index{com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}!clickCell@{clickCell}}
+\index{clickCell@{clickCell}!com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}}
+\doxysubsubsection{clickCell()}
+{\footnotesize\ttfamily void com.\+comp301.\+a09akari.\+controller.\+Alternate\+Mvc\+Controller.\+click\+Cell (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Handles the click event on the cell at row r, column c. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The row of the clicked cell. \\
+\hline
+{\em c} & The column of the clicked cell. \\
+\hline
+\end{DoxyParams}
+\label{interfacecom_1_1comp301_1_1a09akari_1_1controller_1_1_alternate_mvc_controller_a0bdcf56f4a7f3bc8810b1e5c530dfd5d} 
+\index{com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}!getActivePuzzle@{getActivePuzzle}}
+\index{getActivePuzzle@{getActivePuzzle}!com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}}
+\doxysubsubsection{getActivePuzzle()}
+{\footnotesize\ttfamily Puzzle com.\+comp301.\+a09akari.\+controller.\+Alternate\+Mvc\+Controller.\+get\+Active\+Puzzle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter method for the active puzzle. 
+
+\begin{DoxyReturn}{Returns}
+The currently active puzzle. 
+\end{DoxyReturn}
+\label{interfacecom_1_1comp301_1_1a09akari_1_1controller_1_1_alternate_mvc_controller_a5e9fdee6d83295d3fa8ab27e5f590800} 
+\index{com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}!isClueSatisfied@{isClueSatisfied}}
+\index{isClueSatisfied@{isClueSatisfied}!com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}}
+\doxysubsubsection{isClueSatisfied()}
+{\footnotesize\ttfamily boolean com.\+comp301.\+a09akari.\+controller.\+Alternate\+Mvc\+Controller.\+is\+Clue\+Satisfied (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Returns true if the CLUE cell at row r, column c is satisfied by nearby lamps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The row of the cell. \\
+\hline
+{\em c} & The column of the cell. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the CLUE cell is satisfied, false otherwise. 
+\end{DoxyReturn}
+\label{interfacecom_1_1comp301_1_1a09akari_1_1controller_1_1_alternate_mvc_controller_a0dbfe2cbe5f30b87e3b7a3445f066b1b} 
+\index{com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}!isLamp@{isLamp}}
+\index{isLamp@{isLamp}!com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}}
+\doxysubsubsection{isLamp()}
+{\footnotesize\ttfamily boolean com.\+comp301.\+a09akari.\+controller.\+Alternate\+Mvc\+Controller.\+is\+Lamp (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Returns true if the CORRIDOR cell at row r, column c is a lamp. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The row of the cell. \\
+\hline
+{\em c} & The column of the cell. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the CORRIDOR cell is a lamp, false otherwise. 
+\end{DoxyReturn}
+\label{interfacecom_1_1comp301_1_1a09akari_1_1controller_1_1_alternate_mvc_controller_a86d5b530a9e8efe0e1d19c6a5be39ca2} 
+\index{com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}!isLit@{isLit}}
+\index{isLit@{isLit}!com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}}
+\doxysubsubsection{isLit()}
+{\footnotesize\ttfamily boolean com.\+comp301.\+a09akari.\+controller.\+Alternate\+Mvc\+Controller.\+is\+Lit (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{c }\end{DoxyParamCaption})}
+
+
+
+Returns true if the CORRIDOR cell at row r, column c is lit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The row of the cell. \\
+\hline
+{\em c} & The column of the cell. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the CORRIDOR cell is lit, false otherwise. 
+\end{DoxyReturn}
+\label{interfacecom_1_1comp301_1_1a09akari_1_1controller_1_1_alternate_mvc_controller_a84a6b07b0f02dc24e17642fb5da43854} 
+\index{com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}!isSolved@{isSolved}}
+\index{isSolved@{isSolved}!com.comp301.a09akari.controller.AlternateMvcController@{com.comp301.a09akari.controller.AlternateMvcController}}
+\doxysubsubsection{isSolved()}
+{\footnotesize\ttfamily boolean com.\+comp301.\+a09akari.\+controller.\+Alternate\+Mvc\+Controller.\+is\+Solved (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns true if the active puzzle is solved. 
+
+\begin{DoxyReturn}{Returns}
+True if the puzzle is solved, false otherwise. 
+\end{DoxyReturn}
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/main/java/com/comp301/a09akari/controller/\textbf{ Alternate\+Mvc\+Controller.\+java}\end{DoxyCompactItemize}

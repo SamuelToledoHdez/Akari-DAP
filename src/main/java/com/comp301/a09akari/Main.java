@@ -1,4 +1,17 @@
 /**
+ * @mainpage Akari DAP Project Documentation
+ *
+ * @section intro Introduction
+ * This documentation provides an overview of the Akari DAP project, inspired by the Akari logic puzzle. The objective of the game is to illuminate all cells on the grid without lighting those containing light bulbs. The project is backed by Maven, a project management tool that simplifies building and dependency management.
+ *
+ * @section ci Continuous Integration
+ * Continuous integration has been achieved through Jenkins and CircleCI, ensuring an efficient and reliable development flow. SonarCloud has been implemented for static code analysis, enhancing code quality and detecting potential issues. Unit tests have been developed with JUnit to ensure the robustness and reliability of the code.
+ *
+ * @section tech Technologies and Practices
+ * Developed in Java, this project leverages modern technologies and practices to deliver a solid and maintainable implementation of the Akari game. Maven streamlines project management, while Jenkins, CircleCI, and SonarCloud contribute to a comprehensive and high-quality development process.
+ */
+
+/**
  * @file Main.java
  * The entry point for the Akari puzzle game application.
  */
